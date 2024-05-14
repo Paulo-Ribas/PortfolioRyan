@@ -2,17 +2,9 @@
 import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
 import Loanding from './components/Loanding.vue';
-const loaded = ref(false)
+const loaded = ref(true)
 ref(loaded)
 
-function startLoad() {
-  let img = new Image(6000, 6000)
-  img.src = new URL('./assets/img/AboutMe.jpg', import.meta.url).href
-  img.addEventListener('load', ()=> {
-    loaded.value = true
-  })
-}
-startLoad()
 </script>
 
 <template>
