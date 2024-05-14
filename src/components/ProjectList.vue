@@ -2,7 +2,7 @@
     <div class="project-container">
       <div v-once class="project-list" :key="projectChoiced" @scroll="saveScrollState">
           <div class="project-img-container" v-for="(img, index) in projectList" :key="index">
-            <img @load="attScrollState" :src="img.src" alt="imagem do projeto" :class="{selected: (index + 1 == projectChoiced)}">
+            <img @load="attScrollState" :src="img.src" alt="imagem do projeto" :class="{selected: (index + 1 == projectChoiced)}" v-if="img.src != ''">
             <RouterLink :to="`/projects/${projectName}/${index + 1}`"></RouterLink>  
           </div>
       </div>
