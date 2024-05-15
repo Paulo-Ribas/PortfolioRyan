@@ -58,6 +58,8 @@ export default {
         arrayImgs() {
             let firstArray = this.createArray();
             let urls = this.makeSrcFromArray(firstArray);
+            console.log(urls)
+
             return urls;
         }
     },
@@ -79,16 +81,25 @@ export default {
             let param = parseInt(this.$route.params.number)
             let projectArray = [];
             switch (this.projectName) {
-                case 'cartão de apresentação':
-                    projectArray = ['link'];
+                case 'goldentimes':
+                    projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png'];
                     this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
                     break;
+                case 'Beth':
+                    projectArray = ['', 'projetos/imagensapresentação/2.png'];
+                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
+                    break;
+                case 'amigitos':
+                    projectArray = ['', 'projetos/imagensapresentação/3.png'];
+                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
+                    break;
+
             }
             return projectArray;
         },
         makeSrcFromArray(array) {
             let newArray = array.map(link => {
-                return { src: link};
+                return { src: 'https://dbhc8i16f53bc.cloudfront.net/' + link};
             });
             return newArray;
         },

@@ -69,18 +69,10 @@ export default {
             startMousePosition: 0,
             loaded: false,
             responsive: false,
-            projects:[{name:'cartão de apresentação', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/paulotest.png', number: '1'}, 
-            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/paulotest.png', number: '1'},
-            {name:'chat socket', img: new URL('../assets/img/project1/1.png', import.meta.url).href, number: '1'},
-            {name:'funil whats', img: new URL('../assets/img/project3/2.png', import.meta.url).href, number: '2'},
-            {name:'cardPauloRibas', img: new URL('../assets/img/project2/2.png', import.meta.url).href, number: '2'},
-            {name: 'musiQo', img: new URL('../assets/img/project4/1.png', import.meta.url).href, number: '1'},
-            {name: 'lanches budega', img: new URL('../assets/img/project5/1.png', import.meta.url).href, number: '1'},  
-            {name: 'BarberShop', img: new URL('../assets/img/project6/1.png', import.meta.url).href, number: '1'},
-            {name: 'Melissa', img: new URL('../assets/img/project8/1.png', import.meta.url).href, number: '1'},
-            {name: 'ryanng', img: new URL('../assets/img/project9/1.png', import.meta.url).href, number: '1'},
-            {name: 'Amigitos', img: new URL('../assets/img/project10/3.png', import.meta.url).href, number: '3'},
-            {name: 'Musicas', img: new URL('../assets/img/project11/3.png', import.meta.url).href, number: '3'},
+            projects:[{name:'goldentimes', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/13.png', number: '1'}, 
+            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
+            {name: 'amigitos', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/3.png', number: '1'},
+            
             
         ],
         
