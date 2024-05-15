@@ -76,7 +76,7 @@ export default {
             }
         },
         createArray() {
-            let param = this.$route.params.number;
+            let param = parseInt(this.$route.params.number)
             let projectArray = [];
             switch (this.projectName) {
                 case 'cartão de apresentação':
