@@ -357,6 +357,13 @@ export default {
       main, section {
         padding: 0px 3vh;
       }
+      :deep(.btn-container) {
+        width: 58%;
+      }
+      #google h2 {
+        padding: 10vh 0px 7vh;
+
+      }
 }
 
 </style>

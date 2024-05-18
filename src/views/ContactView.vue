@@ -253,7 +253,7 @@ label {
     top: 0;
     left: 50%;
     z-index: 3;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -115%);
 
 }
 .email-error span , .email-success span {
@@ -506,11 +506,11 @@ form {
 }
 .emailStatus-enter-to {
     opacity: 1;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -115%);
 }
 .emailStatus-leave-from {
     opacity: 1;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -115%);
 }
 .emailStatus-leave-to {
     opacity: 0;

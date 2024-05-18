@@ -3,13 +3,13 @@
     <nav>
       <div class="logo-container">
         <RouterLink to="/">
-          <img src="../assets/img/Logo.png">
+          <img src="../assets/img/Logo.png" alt="Logo">
         </RouterLink>
       </div>
       <ul>
         <li>
           <routerLink to="/inicio">
-            home
+            início
             <div class="animation-bar"></div>
           </routerLink>
         </li>

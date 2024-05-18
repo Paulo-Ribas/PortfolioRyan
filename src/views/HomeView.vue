@@ -427,6 +427,10 @@ text-align: center;
     flex-direction: column;
     gap: 13px;
 }
+#home, #google, #about, #faq {
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
 .Opacity-enter-active {
     transition: 0.1s;
 }
@@ -509,7 +513,6 @@ text-align: center;
         flex-direction: column;
         align-items: center;
         flex: 0.8;
-        padding-top: 0px;
     }
 }
 @media screen and (max-width: 560px) {
@@ -542,6 +545,7 @@ text-align: center;
         flex-direction: column;
         align-items: center;
         flex: 0.8;
+        padding-top: 0px;
     }
     .title h2 {
         margin-top: 10px;
@@ -563,6 +567,11 @@ text-align: center;
     
     .SecondText-enter-active {
     transition: 0.7s;
+    }
+
+    #about, #faq, #google {
+        padding-top: 12vh;
+        padding-bottom: 0px;
     }
 
     

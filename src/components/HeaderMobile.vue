@@ -9,9 +9,13 @@
                 </li>
             </ul>
         </nav>   
-        <svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" viewBox="0 0 68 68" fill="none" @touchstart="toggleMenu">
+        <svg v-if="!showMenu" xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" fill="none" @touchstart="toggleMenu">
             <circle cx="34" cy="34" r="33.4426" stroke="white" stroke-width="1.11475"/>
             <path d="M20.0656 23.4098H49.1199M20.0656 33.0946H49.1199M20.0656 42.7794H49.1199" stroke="white" stroke-width="4.84238" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg v-if="showMenu" xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 68 68" fill="none" @touchstart="toggleMenu">
+            <circle cx="34" cy="34" r="33.4426" stroke="white" stroke-width="1.11475"/>
+             <path d="M19.8386 19.8386C20.3758 19.3017 21.1042 19 21.8638 19C22.6233 19 23.3517 19.3017 23.8889 19.8386L34.0173 29.9671L44.1457 19.8386C44.6859 19.3169 45.4095 19.0282 46.1605 19.0347C46.9115 19.0412 47.63 19.3425 48.161 19.8735C48.6921 20.4046 48.9934 21.123 48.9999 21.8741C49.0064 22.6251 48.7177 23.3486 48.1959 23.8889L38.0675 34.0173L48.1959 44.1457C48.7177 44.6859 49.0064 45.4095 48.9999 46.1605C48.9934 46.9115 48.6921 47.63 48.161 48.161C47.63 48.6921 46.9115 48.9934 46.1605 48.9999C45.4095 49.0064 44.6859 48.7177 44.1457 48.1959L34.0173 38.0675L23.8889 48.1959C23.3486 48.7177 22.6251 49.0064 21.8741 48.9999C21.123 48.9934 20.4046 48.6921 19.8735 48.161C19.3425 47.63 19.0412 46.9115 19.0347 46.1605C19.0282 45.4095 19.3169 44.6859 19.8386 44.1457L29.9671 34.0173L19.8386 23.8889C19.3017 23.3517 19 22.6233 19 21.8638C19 21.1042 19.3017 20.3758 19.8386 19.8386Z" fill="white"/>
         </svg>
     </header>
 </template>
@@ -44,7 +48,7 @@ export default {
 
     .menu-container {
         position: fixed;
-        top: 98.6vh;
+        top: 92.6vh;
         right: 2.4vw;
         z-index: 3;
         transform: translateY(-100%);

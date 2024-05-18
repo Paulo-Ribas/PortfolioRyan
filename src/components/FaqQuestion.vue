@@ -1,13 +1,14 @@
 <template>
     <div class="question-container" @click="showAnswer = !showAnswer">
-      <h4 class="question">{{question}} <CarrotBottom></CarrotBottom></h4>
+      <h4 class="question">{{question}} <CarrotBottom v-if="!showAnswer"></CarrotBottom> <CarrotUp v-if="showAnswer"></CarrotUp></h4>
       <transition name="answer">
           <p class="answered" v-html="answered" v-if="showAnswer"></p>
       </transition>
     </div>
   </template>
-  <script>
-  import CarrotBottom from './CarrotBottom.vue'
+<script>
+  import CarrotBottom from './icons/CarrotBottom.vue'
+  import CarrotUp from './icons/CarrotUp.vue'
   export default {
       props: {
           questionProps: String,
@@ -20,7 +21,7 @@
             showAnswer: false,
         }
       },
-      components: {CarrotBottom}
+      components: {CarrotBottom, CarrotUp}
   
   }
   </script>
@@ -35,7 +36,7 @@
         border-radius: 11px;
         border: 1px solid #FFF;
         cursor: pointer;
-        padding: 12px;
+        padding: 12px 15px;
     }
 
     .question {
@@ -76,6 +77,12 @@
     }
     .answer-enter-to {
         height: 100%;
+    }
+    @media screen and (max-width: 556px) {
+        .question svg {
+            transform: translate(calc(0% + 10px), -50%);
+        }
+        
     }
   
   </style>

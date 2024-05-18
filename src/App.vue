@@ -35,7 +35,9 @@ const loaded = ref(true)
 
 <template>
   <Header v-if="!responsive"></Header>
-  <HeaderMobile v-if="responsive && !isTouched"></HeaderMobile>
+  <Transition name="menuAnimation">
+    <HeaderMobile v-if="responsive && !isTouched"></HeaderMobile>
+  </Transition>
   <Loanding v-if="!loaded"></Loanding>
   <RouterView v-if="loaded" />
 </template>
@@ -55,5 +57,17 @@ const loaded = ref(true)
   box-sizing: border-box;
 }
 
-
+.menuAnimation-enter-active, .menuAnimation-leave-active {
+  transition: 0.2;
+  transition-property: opacity;
+}
+.menuAnimation-enter-from {
+  opacity: 0 ;
+}
+.menuAnimation-enter-to {
+  opacity: 1;
+}
+.menuAnimation-leave-to {
+  opacity: 0;
+}
 </style>

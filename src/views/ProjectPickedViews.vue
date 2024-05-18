@@ -77,6 +77,10 @@ export default {
     watch:{
         '$screen.width'(value){
             this.setResponsive(value)
+        },
+        '$route.params.number'(value){
+            this.param = parseInt(value)
+            this.createArray()
         }
     },
     methods: {
@@ -90,6 +94,7 @@ export default {
         },
         createArray() {
             let projectArray = [];
+            console.log('fui chamado e,', this.projectName, this.param)
             switch (this.projectName) {
                 case 'goldentimes':
                     projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/2.png','projetos/projetos/goldentimes/4.png', 'projetos/projetos/goldentimes/5.png', 'projetos/projetos/goldentimes/6.png'];
