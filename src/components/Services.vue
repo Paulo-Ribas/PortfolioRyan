@@ -76,7 +76,8 @@ export default {
     display: flex;
     max-width: 950px;
     justify-content: space-around;
-    transition: 0.4s;
+    transition: 0.5s;
+    animation-timing-function: ease-in-out;
   }
   .img-container {
     flex: 0.3;
@@ -91,5 +92,26 @@ export default {
     max-height: 200px;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  @media screen and (max-width: 556px) {
+    .service {
+        position: relative;
+    }
+    .img-container {
+        position: absolute;
+        width: 30%;
+        height: 50%;
+        max-width: 69px;
+        max-height: 69px;
+        top: 100%;
+        left: 0%;
+        transform: translate(0%, -76%);
+    }
+
+    :deep(.btn-container) {
+        align-self: center !important;
+    }
+    
   }
 </style>

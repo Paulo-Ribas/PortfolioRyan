@@ -1,15 +1,16 @@
 <template>
     <section class="project">
-        <div class="container">
+        <div class="container-project">
             <div class="project-picked-container">
               <div class="btn-title">
-                  <RouterLink to="/projetos" class="return">Voltar</RouterLink>
+                  <RouterLink v-if="!responsive" to="/projetos" class="return">Voltar</RouterLink>
+                  <WhiteBlackBtn v-if="responsive" textProps="Voltar" :whatsProps="false" toProps="/projetos"></WhiteBlackBtn>
                   <!-- <h2>{{projectName}}</h2> -->
               </div>
               <div class="project-img-section">
                   <ProjectList v-if="!responsive" :projectListProps="arrayImgs"></ProjectList>
                   <div class="project-img-container">
-                    <img id="img-project" :src="projectImg" alt="imagem do design do projeto selecionado" @click="zoomToggle">
+                    <img id="img-project" :src="projectImg" alt="imagem do design do projeto selecionado" @click="zoomToggle" @load="setCanZoom" @error="tryFixImage">
                   </div>
                   <ProjectListMq v-if="responsive" :projectListProps="arrayImgs"></ProjectListMq>
               </div>
@@ -21,13 +22,14 @@
 <script>
 import ProjectList from '../components/ProjectList.vue';
 import ProjectListMq from '../components/ProjectListMq.vue';
+import WhiteBlackBtn from '../components/WhiteBlackBtn.vue';
 export default {
     components: {
-        ProjectList, ProjectListMq
+        ProjectList, ProjectListMq, WhiteBlackBtn
     },
     head(){
         return {
-            title: this.projectName,
+            title: `Projeto | ${this.projectName}`,
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 { hid: 'description', name: 'description', content: 'Aqui você descobre mais sobre mim, o compromisso com o Design e o motivo por eu ter escolhido essa área' },
@@ -42,12 +44,21 @@ export default {
           projectImg: '',
           zoom: true,
           responsive: false,
+          canZoom: true,
+          param: parseInt(this.$route.params.number)
 
         };
     },
     beforeMount(){
         this.setResponsive()
-
+        
+    },
+    mounted(){
+        document.querySelector('.container').classList.add('noScroll')
+        window.addEventListener('resize', this.setCanZoom)
+    },
+    beforeUnmount(){
+        document.querySelector('.container').classList.remove('noScroll')
     },
     created(){
       let array = this.createArray()
@@ -78,20 +89,19 @@ export default {
             }
         },
         createArray() {
-            let param = parseInt(this.$route.params.number)
             let projectArray = [];
             switch (this.projectName) {
                 case 'goldentimes':
-                    projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png'];
-                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
+                    projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png','projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png'];
+                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
                 case 'Beth':
-                    projectArray = ['', 'projetos/imagensapresentação/2.png'];
-                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
+                    projectArray = ['projetos/imagensapresentação/2.png'];
+                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
                 case 'amigitos':
-                    projectArray = ['', 'projetos/imagensapresentação/3.png'];
-                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[param]}`
+                    projectArray = ['projetos/imagensapresentação/3.png'];
+                    this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
 
             }
@@ -105,7 +115,7 @@ export default {
         },
         zoomToggle(){
             let img = document.getElementById('img-project')
-
+            if(!this.canZoom) return
             if(this.zoom) {
                 img.style.maxHeight = '100%'
                 img.style.cursor = 'zoom-in'
@@ -116,15 +126,31 @@ export default {
                 img.style.cursor = 'zoom-out'
                 this.zoom = true
             }
+        },
+        setCanZoom(){
+            const img = document.getElementById('img-project')
+            const windowHeight = window.innerHeight - 70
+            console.log( img.offsetHeight, windowHeight)
+            
+            if(img.offsetHeight - windowHeight >= 0) {
+                this.canZoom = true
+                img.style.cursor = 'zoom-out'
+                return
+            } 
+            this.canZoom = false
+            img.style.cursor = 'auto'
+        },
+        tryFixImage(){
+            if(!this.arrayCreated[this.param]) return this.projectImg = this.arrayCreated[0].src
         }
     },
 }
 </script>
 
-<style>
+<style scoped>
     section {
         position: absolute;
-        width: 100%;
+        width: 100vw;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.455);
         backdrop-filter: blur(14px);
@@ -133,11 +159,12 @@ export default {
         transform: translateX(-50%);
 
     }
-    .container {
-        overflow: hidden !important;
-        display: flex !important;
-        justify-content: center !important;
-        max-width: 100% !important;
+    .container-project {
+        overflow: hidden ;
+        display: flex ;
+        max-width: 100% ;
+        height: 100vh;
+        justify-content: center;
     }
     .project-picked-container {
         width: 100%;
@@ -147,7 +174,7 @@ export default {
         position: relative;
         z-index: 2;
         max-width: 1425px;
-        margin-top: 12vh;
+        margin-top: 11vh;
     }
     
     .btn-title {
@@ -190,17 +217,18 @@ export default {
     }
     .project-img-section {
         width: 100%;
-        height: calc(95% - 60px);
+        height: calc(100% - 11vh);
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 30px;
     }
     .project-img-container {
-        height: 100%;
+        height: calc(100% - 11vh);
         flex: 1;
         overflow-y: auto;
         display: flex;
+        align-self: flex-start;
         justify-content: center;
     }
     .project-img-container img {
@@ -208,7 +236,7 @@ export default {
         width: fit-content;
         max-height: none;
         max-width: 100%;
-        cursor: zoom-out;
+        cursor: auto;
 
     }
     .project-img-container::-webkit-scrollbar {
@@ -224,12 +252,15 @@ export default {
     }
 
     @media screen and (max-width: 556px) {
-
         .project-picked-container {
-            justify-content: space-around;
+            margin-top: 5vh;
+            gap: 10px;
         }
+
         .project-img-section {
             flex-direction: column;
+            height: calc(100% - 5vh);
+            justify-content: unset;
         }
         .btn-title {
             width: 95%;
@@ -237,11 +268,20 @@ export default {
         }
         .project-img-container {
             flex: none;
-            height: 64%;
-            align-items: center;
+            height: calc(60% - 5vh);
+            align-items: flex-start;
         }
         .project-img-container img {
             max-width: 95%;
+        }
+        :deep(.btn-title){
+            max-width: 200px;
+            width: 70%;
+            font-size: 1.5rem;
+        }
+        :deep(.btn-title a){
+            font-size: 1rem;
+            padding: 12px 0px;
         }
 
     }

@@ -2,6 +2,7 @@
     <main id="home">
         <div class="container">
             <div class="wrapper">
+                <Logo v-if="responsive"></Logo>
                 <div class="title">
                     <h1>
                         <strong> 
@@ -83,16 +84,23 @@ import SetaBottom from '../components/icons/SetaBottom.vue'
 import Whats from '../components/icons/Whats.vue'
 import Loanding from '../components/Loanding.vue'
 import WhiteBlackBtn from '../components/WhiteBlackBtn.vue'
+import Logo from '../components/icons/Logo.vue'
+
 export default {
     components: {
         SetaBottom, Loanding,
         Whats,
         WhiteBlackBtn,
         CardInfo,
-        FaqQuestion
+        FaqQuestion,
+        Logo
     },
     beforeMount(){
         this.setResponsive()
+    },
+    beforeUnmount(){
+      if(this.responsive) document.querySelector('body').scrollIntoView('#home')
+      console.log('scrollei')
     },
     head(){
         return {
@@ -192,7 +200,7 @@ export default {
 }
 #home hr {
     background-color: white;
-    width: 99%;
+    width: 70%;
     max-width: 800px;
     margin: 13px 0px;
 }
@@ -262,7 +270,7 @@ img {
 .whatsbtn {
     border-radius: 27.077px;
     background: #1AB152;
-    width: 100%;
+    width: 70%;
     max-width: 313px;
     padding: 15px 0px;
     text-transform: uppercase;
@@ -312,7 +320,7 @@ text-align: center;
     max-width: 290px !important;
 }
 .contacts-methods-btn-container {
-    width: 100%;
+    width: 60%;
     max-width: 280px;
     display: flex;
 }
@@ -365,7 +373,7 @@ text-align: center;
 }
 .porcents-container hr {
     max-width: 660px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .percent {
     color: #FFF;
@@ -377,7 +385,7 @@ text-align: center;
     letter-spacing: -0.979px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 13px;
 }
 .number-percent {
     color: #FFF;
@@ -480,19 +488,31 @@ text-align: center;
     
 }
 @media screen and (max-width: 870px) {
-  .title, .img-container {
-    padding-top: 0%;
-    align-items: center;
-  }
-  .title h1 {
-    text-align: center;
-  }
-  .img-container img {
-    max-height: 90%;
-    max-width: 58%;
-  }
+    .wrapper {
+        flex-direction: column;
+    }
+    #home h1{
+        font-size: 4rem;
+        line-height: 5.7rem;
+        -webkit-text-stroke: 4px;
+    }
+    #home strong small {
+        font-size: 1rem;
+        text-transform: none;
+        font-weight: 400;
+        word-spacing: 0px;
+        -webkit-text-stroke: 0px;
+        line-height: 2rem;
+        font-family: 'Inter';
+    }
+    .title {
+        flex-direction: column;
+        align-items: center;
+        flex: 0.8;
+        padding-top: 0px;
+    }
 }
-@media screen and (max-width: 556px) {
+@media screen and (max-width: 560px) {
     .wrapper {
         flex-direction: column;
     }
@@ -512,29 +532,33 @@ text-align: center;
         color: #FFF;
         text-align: center;
     }
-    #home strong small {
-        font-size: 1rem;
-        text-transform: none;
-        font-weight: 400;
-        word-spacing: 0px;
-        -webkit-text-stroke: 0px;
-        line-height: 2rem;
-        font-family: 'Inknut Antiqua';
+    .name-container {
+        line-height: 6.8rem;
+    }
+    .wrapper {
+        padding-top: 5vh;
     }
     .title {
         flex-direction: column;
         align-items: center;
         flex: 0.8;
     }
-    .img-container {
-        flex: 1.2;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 8px;
-        display: flex;
+    .title h2 {
+        margin-top: 10px;
+        margin-bottom: 5px;
     }
-    .img-container img {
-        width: 60%;
+    .title hr {
+        margin: 5px 0px;
+    }
+    .title svg {
+        margin: 10px 0px 15px;
+    }
+    .contacts-methods {
+        gap: 5px;
+    }
+
+    main, section {
+        padding: 0px 4vw;
     }
     
     .SecondText-enter-active {
