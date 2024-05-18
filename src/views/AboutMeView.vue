@@ -41,6 +41,7 @@
     
 </template>
 <script>
+import { useLink } from 'vue-router'
 import SetaBottom from '../components/icons/SetaBottom.vue'
 import WhiteBlackBtn from '../components/WhiteBlackBtn.vue'
 
@@ -54,9 +55,12 @@ export default {
             title: 'Sobre Mim',
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-                { hid: 'description', name: 'description', content: 'Aqui você descobre mais sobre mim, o compromisso com o Design e o motivo por eu ter escolhido essa área' },
+                { hid: 'description', name: 'description', content: 'Sou especialista em design web e gráfico. Ofereço design de sites responsivos, landing pages, lojas virtuais, interfaces de aplicativos, logotipos, cartões de visita, banners e UI/UX design. Transformo suas ideias em soluções visuais impactantes e eficientes.'},
 
             ],
+            link: [
+                {rel: 'canonical', href: 'https://ryannghisi.com.br/sobre'}
+            ]
         }
     },
     data(){

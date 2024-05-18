@@ -48,9 +48,12 @@ export default {
             title: 'Sobre Mim',
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-                { hid: 'description', name: 'description', content: 'Obtenha o melhor design para suas necessidades . Oferecemos uma variedade de serviços, incluindo design e desenvolvimento de sites, landing page, interfaces de aplicativos, logotipos, cartões de visitas, banners e outras peças gráficas. Não se contente com um serviço abaixo da média; confie em nós para obter um design de alta qualidade personalizado para atender às suas necessidades.' },
+                { hid: 'description', name: 'description', content: 'Explore nossa diversificada coleção de trabalhos recentes. De sites responsivos a logotipos marcantes, cada projeto é único e feito sob medida para nossos clientes.'},
 
             ],
+            link: [
+                {rel: 'canonical', href: 'https://ryannghisi.com.br/projetos'}
+            ]
         }
     },
     mounted(){

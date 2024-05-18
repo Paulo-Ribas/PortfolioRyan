@@ -72,6 +72,9 @@ export default {
                 { hid: 'description', name: 'description', content: 'Entre em contato comigo para solicitar serviços.'},
 
             ],
+            link: [
+                {rel: 'canonical', href: 'https://ryannghisi.com.br/contato'}
+            ]
         }
     },
     data(){

@@ -92,15 +92,15 @@ export default {
             let projectArray = [];
             switch (this.projectName) {
                 case 'goldentimes':
-                    projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png','projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/1.png'];
+                    projectArray = ['projetos/projetos/goldentimes/1.png', 'projetos/projetos/goldentimes/2.png','projetos/projetos/goldentimes/4.png', 'projetos/projetos/goldentimes/5.png', 'projetos/projetos/goldentimes/6.png'];
                     this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
                 case 'Beth':
-                    projectArray = ['projetos/imagensapresentação/2.png'];
+                    projectArray = ['projetos/imagensapresentação/2.png', 'projetos/projetos/beth/1.png', 'projetos/projetos/beth/3.png', 'projetos/projetos/beth/4.png'];
                     this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
                 case 'amigitos':
-                    projectArray = ['projetos/imagensapresentação/3.png'];
+                    projectArray = ['projetos/imagensapresentação/3.png', 'projetos/projetos/amigitos/2.png'];
                     this.projectImg = `https://dbhc8i16f53bc.cloudfront.net/${projectArray[this.param - 1]}`
                     break;
 

@@ -46,7 +46,7 @@
             <div class="cards-info-container">
                 <CardInfo :maxUniverseProps="false" titleProps="site 100% responsivo" :textProps="card1" :showBtnProps="false"></CardInfo>
                 <CardInfo :maxUniverseProps="false" titleProps="design agradável" :textProps="card2" :showBtnProps="false"></CardInfo>
-                <CardInfo :maxUniverseProps="false" titleProps="performace" :textProps="card3" :showBtnProps="true" toProps="servicos" btnTextProps="veja meus serviços"></CardInfo>
+                <CardInfo :maxUniverseProps="false" titleProps="performance" :textProps="card3" :showBtnProps="true" toProps="servicos" btnTextProps="veja meus serviços"></CardInfo>
                 <CardInfo :maxUniverseProps="false" titleProps="suporte único" :textProps="card4" :showBtnProps="true" toProps="servicos" btnTextProps="veja meus serviços"></CardInfo>
             </div>
     </section>
