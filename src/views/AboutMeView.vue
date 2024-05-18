@@ -1,5 +1,5 @@
 <template>
-    <main id="home">
+    <main id="about">
         <div class="shadow"></div>
         <div class="container">
             <div class="wrapper">
@@ -9,7 +9,7 @@
                         <Transition name="FirstText">
                             <span class="about" v-if="loaded">sobre</span>
                         </Transition>
-                        <br>
+                        <br v-if="!responsive">
                         <Transition name="SecondText">
                             <span class="me" v-if="loaded">mim</span>
                         </Transition>
@@ -21,7 +21,7 @@
                         </transition>
                     </h1>
                     <Transition name="svgAnimation">
-                        <SetaBottom v-if="loaded && responsive"></SetaBottom>
+                        <SetaBottom v-if="loaded && responsive" widthProps="4rem" heightProps="4rem"></SetaBottom>
                     </Transition>
                 </div>
                 <div class="description-container">
@@ -76,7 +76,7 @@ export default {
     },
     methods:{
         setResponsive(value = this.$screen.width){
-            if(value <= 556) {
+            if(value <= 870) {
                 this.responsive = true
             }
             else {
@@ -91,7 +91,7 @@ export default {
 
 <style scoped>
 
-#home {
+#about {
     background-image: url('https://dbhc8i16f53bc.cloudfront.net/backgrounds/pc-sobremim.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -101,7 +101,7 @@ export default {
     position: relative;
 }
 
-#home h1 {
+#about h1 {
     color: white;
     color: #FFF;
     font-family: Inter;
@@ -113,7 +113,7 @@ export default {
     letter-spacing: 3px;
     -webkit-text-stroke: 4px;
 }
-#home strong small {
+#abouut strong small {
     font-family: 'Inknut Antiqua';
     font-size: 1.2rem;
     text-transform: capitalize;
@@ -251,85 +251,61 @@ export default {
     
 }
 @media screen and (max-width: 870px) {
+    .container {
+        height: fit-content;
+    }
+    .wrapper {
+        flex-direction: column;
+        gap: 0px;
+    }
+
     .description-container {
         padding-top: 0%;
         align-items: center;
+        max-width: unset;
     }
     .title {
-        flex: 1;
-        height: 100%;
+        margin-top: 30px;
+        flex: 0.7;
+        min-height: 240px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         padding-top: 0%;
         align-items: center;
-
+    }
+    .title svg {
+        position: relative;
     }
   .description-container p {
     padding: 10px 10px;
     font-size: 1.5rem;
-    max-width: 300px;
-    max-height: 240px;
+    max-width: unset;
+    max-height: 280px;
+    width: 80%;
     overflow-y: auto;
+    height: 96%;
+    align-self: center;
+  }
+  .description-container hr {
+    max-width: 400px;
+    width: 70%;
+    align-self: center;
+  }
+  .description-container .btn-container {
+    align-self: center;
   }
 }
-@media screen and (max-width: 556px) {
-    .wrapper {
-        flex-direction: column;
-    }
-    #home h1 {
-        color: white;
-        font-family: Inter;
-        font-size: 4rem;
-        font-style: normal;
-        font-weight: bold;
-        line-height: 5.7rem;
-        text-transform: uppercase;
-        word-spacing: 6px;
-        -webkit-text-stroke: 4px;
-        padding-top: 0%;
-        width: fit-content;
-        max-width: 99%;
-        color: #FFF;
-        text-align: center;
-    }
-    #home strong small {
-        font-size: 1rem;
-        text-transform: none;
-        font-weight: 400;
-        word-spacing: 0px;
-        -webkit-text-stroke: 0px;
-        line-height: 2rem;
-        font-family: 'Inknut Antiqua';
-    }
-    .title {
-        flex-direction: column;
-        align-items: center;
-        flex: 0.8;
-    }
-    .description-container {
-        flex: 1.2;
-        align-items: flex-start;
-        justify-content: center;
-        display: flex;
-        padding-top: 5px;
-    }
-    .SecondText-enter-active {
-    transition: 0.7s;
+
+@media screen and (max-width: 550px) {
+    #about h1 {
+        font-size: 4.5rem;
     }
     .description-container p {
-    font-family: 'Inknut Antiqua';
-    color: white;
-    background-color: #181818;
-    border: 1px solid white;
-    border-radius: 15px;
-    padding: 15px;
-    height: fit-content;
-    max-width: 95%;
-    font-size: 1rem;
-    max-height: 316px;
-    overflow-y: auto;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 90%;
+    }
 }
 
-    
-}
 </style>

@@ -5,10 +5,10 @@
         <span>
           Serviços
           <Transition name="svgAnimation2">
-            <SetaRotate v-if="loadedSvg" :rightPositiveProps="true" widthProps="6.3rem" heightProps="6.3rem"></SetaRotate>
+            <SetaRotate v-if="loadedSvg && !responsive" :rightPositiveProps="true" widthProps="6.3rem" heightProps="6.3rem"></SetaRotate>
           </Transition>
           <Transition name="svgAnimation">
-            <SetaRotate2 v-if="loadedSvg" widthProps="6.3rem" heightProps="6.3rem"></SetaRotate2>
+            <SetaRotate2 v-if="loadedSvg && !responsive" widthProps="6.3rem" heightProps="6.3rem"></SetaRotate2>
           </Transition>
 
         </span>
@@ -63,16 +63,33 @@ import ServicesVue from '../components/Services.vue'
 
 export default {
   components: { CardInfo,ServicesVue, SetaRotate, SetaRotate2},
+  beforeMount(){
+    this.setResponsive()
+  },
   mounted(){
     this.loaded = true
     setTimeout(() => {
       this.loadedSvg = true
     }, 100);
   },
+  head(){
+        return {
+            title: 'Serviços',
+            meta: [
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                { hid: 'description', name: 'description', content: 'Obtenha o melhor design para suas necessidades . Oferecemos uma variedade de serviços, incluindo design e desenvolvimento de sites, landing page, interfaces de aplicativos, logotipos, cartões de visitas, banners e outras peças gráficas. Não se contente com um serviço abaixo da média; confie em nós para obter um design de alta qualidade personalizado para atender às suas necessidades.' },
+
+            ],
+            link: [
+              {rel: 'canonical', href:'https://ryannghisi.com.br/serviços'}
+            ]
+        }
+    },
   data(){
     return {
       loaded: false,
       loadedSvg: false,
+      responsive: false,
       services: [
         {
           imgSrc: 'https://dbhc8i16f53bc.cloudfront.net/icones/browser_4298091.png',
@@ -145,7 +162,22 @@ export default {
                 "Teresina"
             ],
     }
-  }
+  },
+  watch: {
+        '$screen.width'(value){
+            this.setResponsive(value)
+        }
+    },
+    methods:{
+        setResponsive(value = this.$screen.width){
+            if(value <= 556) {
+                this.responsive = true
+            }
+            else {
+                this.responsive = false
+            }
+        },
+    }
 
 }
 </script>
@@ -180,7 +212,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8vh;
+    gap: 12vh;
   }
   .service {
     width: 97%;
@@ -315,5 +347,16 @@ export default {
   transform: translate(50%, -50%) scale(1) !important;
 }
 
+@media screen and (max-width: 556px) {
+      h1 span {
+        padding: 0px 0px;
+      }
+      h1 {
+        font-size: 5.7rem;
+      }
+      main, section {
+        padding: 0px 3vh;
+      }
+}
 
 </style>

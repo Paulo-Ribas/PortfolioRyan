@@ -420,14 +420,17 @@ input[type='text']::placeholder, input[type='email']::placeholder{
 
 
 @media screen and (max-width: 870px) {
+    #contact {
+        background-image: url('https://dbhc8i16f53bc.cloudfront.net/backgrounds/mobileContactBackground.png');
+
+    }
     .form-container {
         flex: 1;
         width: 90%;
         max-width: 500px;
     } 
     .wrapper {
-        padding-top: 15px;
-    }
+        padding: 15px 2vh 0px;    }
     form {
         height: 85%;
         display: flex;

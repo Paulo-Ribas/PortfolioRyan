@@ -17,7 +17,7 @@
                         </Transition>
                     </h1>
                     <Transition name="svgAnimation">
-                        <SetaBottom v-if="loaded && responsive"></SetaBottom>
+                        <SetaBottom v-if="loaded && responsive" heightProps="4.5rem" widthProps="4.5rem"></SetaBottom>
                     </Transition>
                 </div>
                 <RouterView></RouterView>
@@ -71,6 +71,10 @@ export default {
             responsive: false,
             projects:[{name:'goldentimes', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/13.png', number: '1'}, 
             {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
+            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
+            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
+            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
+            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
             {name: 'amigitos', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/3.png', number: '1'},
             
             
@@ -90,96 +94,6 @@ export default {
             }
             else {
                 this.responsive = false
-            }
-        },
-        translateToLeft(){
-            let slide = document.querySelector('.slide')
-            this.currentTranslate += 333
-            slide.style.transform = `translateX(${this.currentTranslate}px)`
-            if(this.countRight > 0 && this.countGeneral > 0) {
-                this.countLeft++
-                this.countRight--
-                this.verifyCurrentCountPosition()
-                return
-            }
-            this.countLeft++
-            this.countGeneral--
-            this.verifyCurrentCountPosition()
-           
-            
-        },
-        translateToRight(){
-            let slide = document.querySelector('.slide')
-            this.currentTranslate -= 333
-            slide.style.transform = `translateX(${this.currentTranslate}px)`
-            
-            if(this.countLeft > 0 && this.countGeneral > 0){
-                this.countRight++
-                this.countLeft--
-                this.verifyCurrentCountPosition()
-                return
-            }
-            this.countRight++
-            this.verifyCurrentCountPosition()
-  
-
-        },
-        doubleArray(){
-            let newArray = this.projects
-            this.projects.forEach(project => {
-                newArray.push(project)
-            });
-            this.projects = newArray
-        this.doubled = true
-        },
-        verifyCurrentTranslate(left){
-            let slide = document.querySelector('.slide')
-            let amount = this.projects.length
-
-            console.log(left, amount)
-
-            if(left <= 197) {
-                this.currentTranslate = this.currentTranslate - (333 * amount / 2)
-                slide.style.transform =  `translateX(${this.currentTranslate})`
-            }
-        },
-        verifyCurrentCountPosition(){
-            let slide = document.querySelector('.slide')
-            let amount = this.projects.length
-            if(!this.doubled) amount *= 2
-            if(this.countGeneral < 0 || this.countLeft == amount) {
-                this.currentTranslate = 0
-                slide.style.transition = '0s'
-                slide.style.transitionDuraction = '0s'
-                if(!this.doubled) this.doubleArray() 
-                this.currentTranslate = this.currentTranslate -= (333 * amount / 2)
-                slide.style.transform =  `translateX(${this.currentTranslate}px)`
-                this.currentTranslate += 333
-                setTimeout(() => {
-                    slide.style.transition = '0.3s'
-                    slide.style.transform =  `translateX(${this.currentTranslate}px)`
-                }, 1);
-                this.countLeft = (amount / 2)
-                this.countRight = (amount / 2) - 1
-                this.countGeneral = (amount / 2)
-                return
-            }
-            if(this.countRight >= (this.projects.length - 3)){
-                this.currentTranslate = 0 - ((333 * amount / 2) - (333* 4))
-                slide.style.transition = '0s'
-                slide.style.transitionDuraction = '0s'
-                if(!this.doubled) this.doubleArray()
-                //this.currentTranslate = this.currentTranslate -= (333 * amount / 2)
-                slide.style.transform =  `translateX(${this.currentTranslate}px)`
-                this.currentTranslate -= 333
-                setTimeout(() => {
-                    slide.style.transition = '0.3s'
-                    slide.style.transform =  `translateX(${this.currentTranslate}px)`
-                }, 3);
-                this.countRight = (amount / 2) - 3
-                this.countLeft = (amount / 2) + 2
-                this.countGeneral = (amount / 2) - 3
-                return
             }
         },
     }
@@ -215,8 +129,8 @@ export default {
     user-select: none;
 }
 #projects h1 span {
-    -webkit-text-stroke: 4px;
-    font-weight: bold;
+    -webkit-text-stroke: 5px;
+    font-weight: normal;
 
 
 }
@@ -240,6 +154,10 @@ export default {
     flex-direction: column;
     align-items: center;
 }
+.noScroll {
+        overflow-y: hidden !important;
+        max-width: unset  !important;
+    }
 .shadow {
     background-color: #181818;
     height: 100%;
@@ -295,10 +213,10 @@ export default {
     .wrapper {
         flex-direction: column;
     }
-    #home h1 {
+    #projects h1 {
         color: white;
         font-family: Inter;
-        font-size: 4rem;
+        font-size: 4.5rem;
         font-style: normal;
         font-weight: bold;
         line-height: 5.7rem;

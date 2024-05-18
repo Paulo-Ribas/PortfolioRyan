@@ -2,8 +2,8 @@
     <div class="project-container">
       <div v-once class="project-list" :key="projectChoiced" @scroll="saveScrollState">
           <div class="project-img-container" v-for="(img, index) in projectList" :key="index">
-            <img @load="attScrollState" :src="img.src" alt="imagem do projeto" :class="{selected: (index + 1 == projectChoiced)}" v-if="img.src != ''">
-            <RouterLink :to="`/projects/${projectName}/${index + 1}`"></RouterLink>  
+            <img @load="attScrollState" :src="img.src" alt="imagem do projeto" :ref="index + 1" :class="{selected: (index + 1 == projectChoiced)}">
+            <RouterLink :to="`/projetos/${projectName}/${index + 1}`"></RouterLink>  
           </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       },
       data(){
           return {
-              projectChoiced: this.$route.params.number,
+              projectChoiced: parseInt(this.$route.params.number),
               projectList: this.projectListProps,
               projectName: this.$route.params.name
           }
@@ -49,11 +49,25 @@
                 let scrollSaved = localStorage.getItem('scrollSaved')
                 this.setScrollTop(scrollSaved)
             }
+        },
+        toggleClassLists(value){
+            try {
+                this.$refs[value][0].classList.add('selected')
+                const entries = Object.entries(this.$refs)
+               entries.forEach((target, index) => {
+                    if(value != index + 1) target[1][0].classList.remove('selected')
+                })
+                
+            } catch (error) {
+                return
+            }
+
         }
       },
       watch:{
         '$route.params.number'(value){
-            this.projectChoiced = value
+            this.projectChoiced = parseInt(value)
+            this.toggleClassLists(value)
         },
       },
   
@@ -63,12 +77,14 @@
   <style scoped>
     .project-container {
         width: 100%;
-        height: calc(100% + 7px);
+        height: calc(100% - 11vh);
         max-height: 980px;
         max-width: 264px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        overflow-y: auto;
+        align-self: flex-start;
 
     }
 
