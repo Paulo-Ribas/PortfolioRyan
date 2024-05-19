@@ -1,4 +1,4 @@
-Sitemap: link
+Sitemap: https://ryannghisi.com.br/sitemap.xml
 
 User-agent: *
 
