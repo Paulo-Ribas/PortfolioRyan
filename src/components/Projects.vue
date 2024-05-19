@@ -2,7 +2,7 @@
     <div class="slide-container">
         <div class="slide" >
             <div class="project-box" v-for="(project, index) in projectsTratament" :key="index">
-                <img :src="project.img" draggable="false">
+                <img :src="project.img" :alt="'imagem principal do projeto' + project.name" draggable="false">
                 <RouterLink :to="'/projetos/' + project.name + '/' + project.number"></RouterLink>
             </div>
         </div>
@@ -69,6 +69,7 @@ export default {
         padding-bottom: 10px;
         max-width: 1280px;
         overflow: hidden;
+        justify-content: center;
         margin-top: 10vh;
     }
     .slide {
