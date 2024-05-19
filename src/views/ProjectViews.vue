@@ -74,12 +74,7 @@ export default {
             responsive: false,
             projects:[{name:'goldentimes', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/13.png', number: '1'}, 
             {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
-            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
-            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
-            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
-            {name: 'Beth', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/2.png', number: '1'},
             {name: 'amigitos', img: 'https://imagensdoportfoliorg.s3.sa-east-1.amazonaws.com/projetos/imagensapresenta%C3%A7%C3%A3o/3.png', number: '1'},
-            
             
         ],
         
