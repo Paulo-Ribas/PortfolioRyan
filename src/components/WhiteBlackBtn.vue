@@ -1,6 +1,6 @@
 <template>
         <RouterLink v-if="!whats" class="btn-black-white" :to="to">{{text}}</RouterLink>
-        <a v-if="whats" class="btn-black-white whats" href="">{{text }}</a>
+        <a v-if="whats" class="btn-black-white whats" :href="to">{{text}}</a>
 </template>
 
 <script>

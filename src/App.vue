@@ -1,11 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useScreen, useGrid } from 'vue-screen';
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue';
 import HeaderMobile from './components/HeaderMobile.vue';
 import Loanding from './components/Loanding.vue';
 let isTouched = ref(false)
+let route = useRoute()
 document.addEventListener('touchstart', () => {
     isTouched.value = true
 })
@@ -29,6 +30,14 @@ watch(screen, value => {
     responsive.value = false
 }, {deep: true})
 
+let showMenu = ref(false)
+
+watch(route, value => {
+  console.log(value.path.split('/').length)
+  if(value.path.includes('projetos') && value.path.split('/').length > 2) return showMenu.value = false
+  showMenu.value = true
+})
+
 const loaded = ref(true)
 
 </script>
@@ -36,7 +45,7 @@ const loaded = ref(true)
 <template>
   <Header v-if="!responsive"></Header>
   <Transition name="menuAnimation">
-    <HeaderMobile v-if="responsive && !isTouched"></HeaderMobile>
+    <HeaderMobile v-if="responsive && !isTouched && showMenu"></HeaderMobile>
   </Transition>
   <Loanding v-if="!loaded"></Loanding>
   <RouterView v-if="loaded" />
