@@ -45,7 +45,7 @@ export default {
     },
     head(){
         return {
-            title: 'Sobre Mim',
+            title: 'Projetos',
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 { hid: 'description', name: 'description', content: 'Explore nossa diversificada coleção de trabalhos recentes. De sites responsivos a logotipos marcantes, cada projeto é único e feito sob medida para nossos clientes.'},

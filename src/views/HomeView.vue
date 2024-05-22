@@ -13,12 +13,12 @@
                         <span class="name-container">
                         <Transition name="FirstText">
                             <span v-if="loaded" class="name">
-                                ryann
+                                Ryann
                             </span>
                         </Transition>
                         <Transition name="SecondText">
                             <span v-if="loaded" class="secondName">
-                                ghisi
+                                Ghisi
                             </span>
                         </Transition>
                         </span>
@@ -104,7 +104,7 @@ export default {
     },
     head(){
         return {
-            title: 'Portifólio',
+            title: 'Início',
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 

@@ -42,13 +42,13 @@
     <h2><span></span> cidades atendidas <span></span></h2>
     <div class="citys-container">
       <div class="citys">
-        <span v-for="(city, index) in citysList1" :key="index">Desenvolvedor Web em {{city}}</span>
+        <span v-for="(city, index) in citysList1" :key="index">Web Designer em {{city}}</span>
       </div>
       <div class="citys">
-        <span v-for="(city, index) in citysList2" :key="index">Desenvolvedor Web em {{city}}</span>
+        <span v-for="(city, index) in citysList2" :key="index">Web Designer em {{city}}</span>
       </div>
       <div class="citys">
-        <span v-for="(city, index) in citysList3" :key="index">Desenvolvedor Web em {{city}}</span>
+        <span v-for="(city, index) in citysList3" :key="index">Web Designer em {{city}}</span>
       </div>
     </div>
 
